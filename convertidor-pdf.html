@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convertir código a PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <h1>Convertir código a PDF</h1>
+    <textarea
+      id="codigo"
+      rows="10"
+      cols="50"
+      placeholder="Escribe tu código aquí..."
+    ></textarea
+    ><br />
+    <button onclick="convertirAPDF()">Convertir a PDF</button>
+
+    <script>
+      function convertirAPDF() {
+        // Obtener el texto del textarea
+        const codigo = document.getElementById("codigo").value;
+
+        // Crear una instancia de jsPDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Añadir el texto al PDF
+        doc.text(codigo, 10, 10);
+
+        // Descargar el archivo PDF
+        doc.save("codigo.pdf");
+      }
+    </script>
+  </body>
+</html>
