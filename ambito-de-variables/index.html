@@ -1,0 +1,29 @@
+<!--- Efrén Corzón -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let idade = 30; // Idade global
+
+      function exemploIdades() {
+        let idade = 25; // Idade local na función
+        console.log("Idade local na función: ", idade);
+
+        if (true) {
+          let idade = 20; // Idade no bloque
+          console.log("Idade no bloque: ", idade);
+        }
+      }
+
+      exemploIdades(); // Chama á función
+
+      console.log("Idade global: ", idade); // Mostra a idade global
+    </script>
+  </body>
+</html>
