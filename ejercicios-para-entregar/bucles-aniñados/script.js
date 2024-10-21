@@ -1,3 +1,5 @@
+//Efrén Corzón
+
 let txt = prompt("Introduce unha cadea de texto para quitarlle as vocais:");
 
 let palabras = txt.split(" ");
