@@ -1,0 +1,43 @@
+<!--Efrén Corzón-->
+
+<!DOCTYPE html>
+<html lang="gl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DNI e letra correspondente</title>
+  </head>
+  <body>
+    <h1>Obter letra DNI</h1>
+    <button onclick="conseguirLetraDNI()">Calcular letra do DNI</button>
+    <script>
+      function conseguirLetraDNI() {
+        // Cadea de letras correspondentes segundo o resto
+        const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+        // Pedimos o número de DNI ao usuario
+        let dni = prompt("Introduce o número do DNI(8 díxitos e sen letra):");
+
+        // Comprobamos que o DNI non estea vacio, que teña 8 díxitos e que sexa un número
+        if (dni === null) {
+          alert("Operación cancelada.");
+          return;
+        }
+
+        if (dni.length !== 8 || isNaN(dni)) {
+          alert("O número de DNI debe ter 8 díxitos e ser numérico.");
+          return;
+        }
+
+        // Obtemos o resto da división entre 23
+        let resto = dni % 23;
+
+        // Obtemos a letra correspondente da cadea usando o resto
+        let letra = letras.charAt(resto);
+
+        // Amosamos o resultado nunha ventá emerxente
+        alert("A letra correspondente para o DNI " + dni + " é: " + letra);
+      }
+    </script>
+  </body>
+</html>
