@@ -13,6 +13,9 @@
 
     <script type="text/javascript">
       function calc() {
+        //Obtenemos en h2
+        const h2 = document.getElementById("result");
+
         // Generar 10 números aleatorios en el rango [0-100)
         let numeros = [];
         for (let i = 0; i < 10; i++) {
@@ -29,9 +32,7 @@
         area = area.toFixed(2);
 
         // Mostrar el resultado en el HTML
-        document.getElementById(
-          "result"
-        ).textContent = `Número máximo: ${maximo.toFixed(2)}, Área: ${area}`;
+        h2.textContent = `Número máximo: ${maximo.toFixed(2)}, Área: ${area}`;
       }
     </script>
   </body>
