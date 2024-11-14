@@ -1,0 +1,52 @@
+<!--Efrén Corzón-->
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JavaScript</title>
+  </head>
+  <body>
+    <h1>Error</h1>
+    <p>Introduce un número impar en el rango 1-40:</p>
+    <input id="num" type="text" />
+    <button type="button" onclick="checkErrors()">Comprobar</button>
+    <p id="result"></p>
+
+    <script>
+      function checkErrors() {
+        // Obtener el valores
+        const input = document.getElementById("num").value;
+        const resultado = document.getElementById("result");
+
+        try {
+          // Convertir número entero
+          const n = parseInt(input);
+
+          // Verificar si es un número
+          if (isNaN(n)) {
+            throw new Error("Entrada no válida: debe ser un número.");
+          }
+
+          // Verificar si está fuera del rango 1-40
+          if (n < 1 || n > 40) {
+            throw new RangeError("El número debe estar en el rango de 1 a 40.");
+          }
+
+          // Verificar si  es par
+          if (n % 2 === 0) {
+            throw new Error("El número debe ser impar.");
+          }
+
+          // Mostrar resultado si el número es válido
+          resultado.textContent = `Número válido: ${n}`;
+          //Si el resultado es correcto lo pintamos de verde
+          resultado.style.color = "green";
+        } catch (error) {
+          // Mostrar mensaje de error
+          resultado.textContent = error.message;
+          resultado.style.color = "red";
+        }
+      }
+    </script>
+  </body>
+</html>
