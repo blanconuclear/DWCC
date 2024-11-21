@@ -1,0 +1,62 @@
+<!--Efrén Corzón-->
+
+<!DOCTYPE html>
+<html lang="gl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora con eval()</title>
+  </head>
+  <body>
+    <h1>Calculadora</h1>
+    <form id="calcForm" onsubmit="executeCalculation(event)">
+      <label for="expression">Introduce unha expresión matemática:</label><br />
+      <input type="text" id="expression" name="expression" required />
+      <br /><br />
+      <button type="submit">Calcular</button>
+    </form>
+
+    <p><strong>Resultado:</strong> <span id="result">...</span></p>
+
+    <script>
+      // Función para executar o cálculo
+      function executeCalculation(event) {
+        event.preventDefault(); // Evitar a recarga do formulario
+
+        const input = document.getElementById("expression");
+        const resultElement = document.getElementById("result");
+
+        try {
+          // Validar e executar a expresión
+          const expression = input.value.trim();
+
+          // Validar se hai datos
+          if (!expression) {
+            throw new Error(
+              "A expresión está baleira. Introduce un cálculo válido."
+            );
+          }
+
+          // Avaliar a expresión usando eval
+          const result = eval(expression);
+
+          // Validar o resultado
+          if (result === undefined || isNaN(result)) {
+            throw new Error(
+              "A expresión non é válida. Por favor, revisa os datos introducidos."
+            );
+          }
+
+          // Mostrar o resultado
+          resultElement.textContent = result;
+        } catch (error) {
+          // Capturar e mostrar erros
+          resultElement.textContent = `Erro: ${error.message}`;
+        } finally {
+          // Limpar o campo do formulario
+          input.value = "";
+        }
+      }
+    </script>
+  </body>
+</html>

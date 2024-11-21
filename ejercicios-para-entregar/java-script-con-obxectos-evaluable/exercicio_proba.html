@@ -1,33 +1,116 @@
+<!--Efrén Corzón-->
+<!DOCTYPE html>
 <html>
   <head>
-        
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
     <title>JavaScript</title>
-        
     <script type="text/javascript" src="EV_nativos.js"></script>
   </head>
   <body>
-        <noscript><p>JavaScript required</p></noscript>     
+    <!-- Mensaje para navegadores con JavaScript deshabilitado -->
+    <noscript><p>JavaScript required</p></noscript>
+
     <h1>Native Objects</h1>
-        <input type="text" id="name" />     <input type="text" id="surname" />
-        <button id="accion" onClick="changeName();">Change!</button><br />
-        <input type="text" id="birth" />     <button
-      id="accion"
-      onClick="changeDate();"
-    >
-      Change!
-    </button>
-        
+
+    <!-- Inputs para el nombre, apellidos y fecha de nacimiento -->
+    <input type="text" id="name" placeholder="Nombre" />
+    <input type="text" id="surname" placeholder="Apellidos" />
+    <button id="accion" onClick="changeName();">Change!</button><br />
+
+    <input
+      type="text"
+      id="birth"
+      placeholder="Fecha de nacimiento (YYYY-MM-DD)"
+    />
+    <button id="accion" onClick="changeDate();">Change!</button>
+
+    <!-- Resultados mostrados en el DOM -->
     <p>Name: <span style="font-weight: bold" id="fullName">...</span></p>
-        
     <p>Age: <span style="font-weight: bold" id="age">...</span></p>
 
     <script>
-      const name = document.getElementById("name");
-
+      // Función para procesar el nombre completo
       function changeName() {
-        console.log(name.value);
+        // Obtener los valores ingresados por el usuario
+        let name = document.getElementById("name").value;
+        let apelido = document.getElementById("surname").value;
+        let pFullName = document.getElementById("fullName");
+
+        // Eliminar tildes de los nombres y apellidos
+        const nameSinTilde = name
+          .replace("á", "a")
+          .replace("é", "e")
+          .replace("í", "i")
+          .replace("ó", "o")
+          .replace("ú", "u");
+        const apelidoSinTilde = apelido
+          .replace("á", "a")
+          .replace("é", "e")
+          .replace("í", "i")
+          .replace("ó", "o")
+          .replace("ú", "u");
+
+        // Convertir los nombres y apellidos a mayúsculas
+        let nameMayus = nameSinTilde.toUpperCase();
+        let apelidoMayus = apelidoSinTilde.toUpperCase();
+
+        // Separar los nombres y apellidos en un array para procesarlos
+        let nameCompost = nameMayus.split(" "); // Array con nombres
+        let apelidoCompost = apelidoMayus.split(" "); // Array con apellidos
+
+        // Obtener el segundo nombre (si existe)
+        let secondName = "";
+        if (nameCompost.length > 1) {
+          secondName = nameCompost[1].charAt(0) + ".";
+        }
+
+        // Obtener la inicial del segundo apellido (si existe)
+        let secondSurnameInitial = "";
+        if (apelidoCompost.length > 1) {
+          secondSurnameInitial = apelidoCompost[1].charAt(0) + ".";
+        }
+
+        // Construir el resultado final con el formato deseado
+        let resultadoFinal = `${apelidoCompost[0]} ${secondSurnameInitial}, ${nameCompost[0]} ${secondName}`;
+
+        // Mostrar el resultado en el elemento correspondiente
+        pFullName.textContent = resultadoFinal;
+      }
+
+      // Función para calcular la edad
+      function changeDate() {
+        // Obtener la fecha de nacimiento ingresada por el usuario
+        let dateCumple = document.getElementById("birth").value;
+        let pAge = document.getElementById("age");
+
+        // Validar que se haya ingresado una fecha
+        if (!dateCumple) {
+          pAge.textContent = "Por favor, introduce una fecha válida.";
+          return;
+        }
+
+        // Convertir la fecha ingresada a un objeto Date
+        let birth = new Date(dateCumple);
+        let fechaActual = new Date();
+
+        // Validar que la fecha ingresada sea correcta
+        if (isNaN(birth.getTime())) {
+          pAge.textContent = "Formato de fecha incorrecto.";
+          return;
+        }
+
+        // Calcular la diferencia en años y meses
+        let anos = fechaActual.getFullYear() - birth.getFullYear();
+        let meses = fechaActual.getMonth() - birth.getMonth();
+
+        // Ajustar los cálculos si el mes actual es menor al mes de nacimiento
+        if (meses < 0) {
+          anos--;
+          meses += 12;
+        }
+
+        // Mostrar la edad calculada
+        pAge.textContent = `${anos} años y ${meses} meses`;
       }
     </script>
   </body>
