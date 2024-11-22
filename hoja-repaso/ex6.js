@@ -7,7 +7,7 @@ function fechaActual() {
 
   let ano = fechaActual.getFullYear();
   let mes = fechaActual.getMonth() + 1;
-  let dia = fechaActual.getDay();
+  let dia = fechaActual.getDate();
 
   let solucion = `${dia}-${mes}-${ano}`;
 

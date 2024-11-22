@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1º número: <input type="text" id="numeroUno" /> 2º número:
+    <input type="text" id="numeroDos" />
+
+    <button onclick="multiplicacion()">Multiplicación</button>
+    <button onclick="division()">División</button>
+
+    <p id="resultado">Resultado:</p>
+
+    <script>
+      // Escribe un programa en JavaScript para calcular la multiplicación y la
+      //división de dos números (ingresados por el usuario).
+
+      function multiplicacion() {
+        const primerNumero = document.getElementById("numeroUno").value;
+        const segundoNumero = document.getElementById("numeroDos").value;
+        const resultado = document.getElementById("resultado");
+
+        let operacion = primerNumero * segundoNumero;
+        resultado.textContent = operacion;
+      }
+
+      function division() {
+        const primerNumero = document.getElementById("numeroUno").value;
+        const segundoNumero = document.getElementById("numeroDos").value;
+        const resultado = document.getElementById("resultado");
+
+        let operacion = primerNumero / segundoNumero;
+        resultado.textContent = operacion;
+      }
+    </script>
+  </body>
+</html>
