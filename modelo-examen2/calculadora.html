@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta http-equiv="x-ua-compatible" charset="UTF-8" content="IE=10" />
+    <title>JavaScript</title>
+  </head>
+  <body>
+    <h1>Functions</h1>
+    <input id="a" size="6" type="text" />
+    <input id="op" size="2" type="text" />
+    <input id="b" size="6" type="text" />
+    <p id="res">=</p>
+    <p><button type="button" onclick="calc()">Calc!</button></p>
+    <script>
+      function calc() {
+        let a = document.getElementById("a").value;
+        let op = document.getElementById("op").value;
+        let b = document.getElementById("b").value;
+        let result = document.getElementById("res");
+
+        if (!isNaN(a) || !isNaN(b)) {
+          let resultado = eval(String(a) + String(op) + String(b));
+
+          result.textContent = "= " + resultado;
+        }
+      }
+    </script>
+  </body>
+</html>

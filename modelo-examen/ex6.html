@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="gl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de IMC</title>
+  </head>
+  <body>
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <script>
+      function calcularIMC() {
+        let peso = prompt("Dime o teu peso(Kg): ");
+        let altura = prompt("Dime a tua altura(m): ");
+
+        let resultado = peso / (altura * altura);
+
+        if (resultado < 18.5) {
+          alert("Baixo peso");
+        } else if (resultado < 24.9) {
+          alert("peso normal");
+        }
+        if (resultado < 29.9) {
+          alert("sobrepeso");
+        } else {
+          alert("obesidade");
+        }
+      }
+    </script>
+  </body>
+</html>
