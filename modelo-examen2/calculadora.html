@@ -18,6 +18,7 @@
         let result = document.getElementById("res");
 
         if (!isNaN(a) || !isNaN(b)) {
+          //Eval es para convertir cadenas en operaciones matemáticas
           let resultado = eval(String(a) + String(op) + String(b));
 
           result.textContent = "= " + resultado;
