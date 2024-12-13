@@ -24,6 +24,60 @@
           result.textContent = "= " + resultado;
         }
       }
+
+      //OTra posible sulución
+      function calc() {
+        // Obtener los valores de los inputs
+        const inputA = document.getElementById("a").value;
+        const inputOp = document.getElementById("op").value;
+        const inputB = document.getElementById("b").value;
+
+        // Convertir los argumentos a números adecuados
+        const numA = Number(inputA);
+        const numB = Number(inputB);
+
+        // Verificar que los valores son números válidos
+        if (isNaN(numA) || isNaN(numB)) {
+          document.getElementById("res").textContent =
+            "Erro: Entradas non válidas";
+          return;
+        }
+
+        let result;
+
+        // Realizar la operación según el operador usando funciones predefinidas
+        switch (inputOp) {
+          case "+":
+            result = Math.add ? Math.add(numA, numB) : numA + numB;
+            break;
+          case "-":
+            result = Math.subtract ? Math.subtract(numA, numB) : numA - numB;
+            break;
+          case "*":
+            result = Math.imul(numA, numB);
+            break;
+          case "/":
+            result = numB !== 0 ? Math.floor(numA / numB) : NaN;
+            break;
+          case "%":
+            result = Math.fmod ? Math.fmod(numA, numB) : numA % numB;
+            break;
+          default:
+            document.getElementById("res").textContent =
+              "Erro: Operador non válido";
+            return;
+        }
+
+        // Comprobar que el resultado sea finito
+        if (!isFinite(result)) {
+          document.getElementById("res").textContent =
+            "Erro: Resultado non finito";
+          return;
+        }
+
+        // Convertir el resultado a cadena de texto y mostrarlo
+        document.getElementById("res").textContent = `= ${String(result)}`;
+      }
     </script>
   </body>
 </html>
