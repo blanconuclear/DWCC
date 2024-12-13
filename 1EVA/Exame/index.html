@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Adivinanza</title>
+</head>
+<body>
+    <script>
+        function adivinar() {
+            // Generar un número aleatorio entre 0 y 100
+            const numeroRamdom = Math.floor(Math.random() * 100)+1;
+            let preguntaNumero = Number(prompt("Dime un número entre 0 y 100"));
+            let intentos = 0; // Contador de intentos
+
+            // Validar que la entrada inicial sea un número válido
+            while (isNaN(preguntaNumero)) {
+                preguntaNumero = Number(prompt("Por favor, introduce un número válido:"));
+            }
+
+                
+           
+            // Bucle para seguir preguntando hasta acertar
+            while (numeroRamdom !== preguntaNumero && intentos<=7) {
+                if (preguntaNumero > numeroRamdom) {
+                    alert("El número es menor al que has introducido.");
+                } else {
+                    alert("El número es mayor al que has introducido.");
+                }
+                
+                intentos += 1; // Incrementar el contador
+
+                // Pedir otro número
+                preguntaNumero = Number(prompt("Intenta de nuevo:"));
+
+                // Validar nuevamente la entrada
+                while (isNaN(preguntaNumero)) {
+                    preguntaNumero = Number(prompt("Por favor, introduce un número válido:"));
+                }
+
+                if (preguntaNumero === numeroRamdom) {
+                       // Mensaje de victoria
+                        alert(`¡Enhorabuena, has adivinado el número ${numeroRamdom} en ${intentos + 1} intentos!`);
+                }
+
+        
+            }
+        
+           // Mensaje si los intentos son mayores a 7
+           if(intentos === 7) {
+                alert("debes practicar más");
+            } 
+         
+
+         
+        }
+
+        adivinar();
+    </script>
+</body>
+</html>

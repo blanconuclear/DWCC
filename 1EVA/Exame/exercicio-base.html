@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      margin: 50px auto;
+      width: 80%;
+      border-radius: 15px;
+    }
+    input, button {
+      font-size: 16px;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background-color: #6200ea;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3700b3;
+    }
+    .dataPusher {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+<title>Exercicio NN</title>
+</head>
+<body>
+<div class="container">
+	Valor1: <input type="text" id="dataLoader"/>
+	Valor2: <input type="text" id="dataLoader2"/>
+	<div id="dataPusher"> ... </diV>
+	<p>
+	<button onclick="comprobarExercicios()">Comprobar exercicios</button>
+	</p>
+	
+</div>
+
+
+<script src="solucion.js"></script>
+<script src="comprobador.js"></script>
+</body>
+</html>
